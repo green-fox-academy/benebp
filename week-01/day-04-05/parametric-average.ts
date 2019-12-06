@@ -5,7 +5,12 @@
 // Example output: Sum: 15, Average: 3
 
 let input: number = 5;
+let sum: number = 0;
+let avg: number;
 
-for (let i = 0; i <= input; i++) {
-    
+for (let i = 1; i <= input; i++) {
+    sum += i;
 }
+console.log(sum);
+avg = sum / input
+console.log(avg)
