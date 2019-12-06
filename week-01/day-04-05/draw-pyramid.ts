@@ -12,10 +12,13 @@ let lineCount: number = 4;
 //
 // The pyramid should have as many lines as lineCount is
 
-for (var i = 1; i <= lineCount; i++) {
-    var row = "";
-    for (var j = 1; j <= (2 * lineCount - 1); j++) {
-        (j >= lineCount + 1 - i && j <= lineCount - 1 + i) ? row += "*" : row += " ";
+for (let i = 0; i < lineCount; i++) {
+    let str = '';
+    for (let j = 1; j < lineCount-i; j++) {
+      str = str + ' ';
     }
-    console.log(row);
+    for (let k = 1; k <= (2*i+1); k++) {
+      str = str + '*';
+    }
+    console.log(str);
 }
