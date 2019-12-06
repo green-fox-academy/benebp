@@ -6,11 +6,13 @@
 // For numbers which are multiples of both three and five print “FizzBuzz”.
 
 for (let i = 1; i <= 100; i++) {
-    console.log(i)
  if (i % 3 == 0 && i % 5 == 0) {
-    console.log('fizzbuzz')
+    console.log('fizzbuzz');
 } else if (i % 5 == 0) {
-    console.log('buzz')
+    console.log('buzz');
 } else if (i % 3 == 0) {
-    console.log('fizz')
-} }
+    console.log('fizz');
+} else {
+    console.log(i);
+}
+}

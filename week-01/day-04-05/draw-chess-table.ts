@@ -13,12 +13,13 @@
 //
 
 let size: number = 5;
-let output: string = '';
+
 
 for (let i: number = 0; i <= size; i++) {
-    output += '0';
-    for (let j: number = 0; j <= i; j++) {
-        
+    let output: string = '';
+    
+    for (let j: number = 0; j <= size; j++) {
+        output += 'x';
     }
     console.log(output);
 }
