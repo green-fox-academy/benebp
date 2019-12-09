@@ -8,6 +8,8 @@ let numList2: number[] = [1, 2, 3, 8, 5, 6];
 
 // .map is mindfuck
 
-numList2[3] = 4;
+// numList2[3] = 4; - not good when you have a tons of numbers in the array
+
+numList2[numList2.indexOf(8)] = 4;
 
 console.log(numList2);
