@@ -4,10 +4,10 @@
 
 'use strict'
 
-let numList: number[] = [1, 2, 3, 8, 5, 6];
+let numList2: number[] = [1, 2, 3, 8, 5, 6];
 
 // .map is mindfuck
 
-numList[3] = 4;
+numList2[3] = 4;
 
-console.log(numList);
+console.log(numList2);
