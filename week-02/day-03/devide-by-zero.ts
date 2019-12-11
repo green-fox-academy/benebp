@@ -7,10 +7,6 @@
 
 let input: number = 0;
 
-// if (input === 0) {
-//     throw Error('fail');
-// }
-
 function devide(input: number) {
     if (input === 0) {
         throw Error('fail');
@@ -20,9 +16,9 @@ function devide(input: number) {
 }
 
 try {
-    devide(0)
+    devide(input)
 }
 
 catch (e) {
-    console.log('ajjaj');
+    console.log('fail');
 }
