@@ -11,11 +11,16 @@
 
 function writeLines (path: string, word: string, number: number) {
     const fs = require('fs');
-    let words: string[] = [];
-    for (let i: number = 0; i < number; i++) {
-        words.push(word);
+    try{
+        let words: string[] = [];
+        for (let i: number = 0; i < number; i++) {
+            words.push(word);
+        }
+        fs.writeFileSync(path, words.join('\n'));
     }
-    fs.writeFileSync(path, words.join('\n'));
+    catch (e) {
+        console.log('')
+    }
 }
 
 writeLines('./lines.txt', 'fox', 5);
