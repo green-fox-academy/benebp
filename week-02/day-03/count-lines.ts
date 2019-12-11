@@ -5,3 +5,12 @@
 
 'use strict';
 
+// const fs = require('fs');
+
+function lineInFile (filename: string) {
+    const fs = require('fs');
+    let fileContent = fs.readFileSync(filename, 'utf-8');
+    console.log(fileContent.split('\n').length);
+}
+
+lineInFile('./my-file.txt');
