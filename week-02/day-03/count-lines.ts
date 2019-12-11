@@ -9,13 +9,13 @@
 
 function lineInFile (filename: string) {
     const fs = require('fs');
+    try {
     let fileContent = fs.readFileSync(filename, 'utf-8');
     console.log(fileContent.split('\n').length);
+    }
+    catch (e) {
+        console.log(0);
+    }
 }
 
-try {
 lineInFile('./my-file.txt');
-}
-catch (e) {
-    console.log(0);
-}
