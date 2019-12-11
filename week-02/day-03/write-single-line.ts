@@ -12,7 +12,7 @@ function writeName (name:string) {
     fs.writeFileSync ('name.txt', name);
     }
     catch (e) {
-        console.log("Unable to write file: my-file.txt")
+        console.log("Unable to write file: name.txt")
     }
 }
 
