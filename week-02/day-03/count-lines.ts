@@ -13,4 +13,9 @@ function lineInFile (filename: string) {
     console.log(fileContent.split('\n').length);
 }
 
+try {
 lineInFile('./my-file.txt');
+}
+catch (e) {
+    console.log(0);
+}
