@@ -3,7 +3,7 @@
 const canvas = document.querySelector('.main-canvas') as HTMLCanvasElement;
 const ctx = canvas.getContext('2d');
 const width = 1600;
-const heigth = 800;
+const height = 800;
 
 // DO NOT TOUCH THE CODE ABOVE THIS LINE
 
