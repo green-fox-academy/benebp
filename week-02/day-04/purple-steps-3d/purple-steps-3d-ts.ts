@@ -14,7 +14,7 @@ for (let i: number = 0; i < 250; i += 50) {
     let start: number = 0;
     let side: number = 0;
     side += i;
-    start = i + side;
+    start = 50 + i;
     ctx.fillStyle = 'purple';
     ctx.fillRect(start, start, side, side);
     // ctx.strokeRect(0 + i, 0 + i, 50, 50);
