@@ -10,12 +10,12 @@ const height = 800;
 // Reproduce this:
 // [https://github.com/green-fox-academy/teaching-materials/blob/master/workshop/drawing/assets/r4.png]
 
-for (let i: number = 0; i < 250; i += 50) {
-    let start: number = 0;
-    let side: number = 0;
+let start: number = 0;
+let side: number = 0;
+for (let i: number = 0.1; i < 250; i *= 2) {
     side += i;
-    start = 50 + i;
+    start += i;
     ctx.fillStyle = 'purple';
     ctx.fillRect(start, start, side, side);
-    // ctx.strokeRect(0 + i, 0 + i, 50, 50);
+    ctx.strokeRect(start, start, side, side);
 }
