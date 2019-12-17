@@ -9,10 +9,10 @@ const height = 800;
 
 // Fill the canvas with a checkerboard pattern.
 
-ctx.strokeRect(0, 0, 600, 600);
+ctx.strokeRect(0, 0, 400, 400);
 
-for (let i: number = 0; i <= 500; i = i + 100) {
-    for (let j: number = 0; j <= 500; j = j + 100) {
+for (let i: number = 0; i <= 300; i = i + 100) {
+    for (let j: number = 0; j <= 300; j = j + 100) {
         ctx.fillRect(0 + j, 0 + i, 50, 50);
         ctx.fillRect(50 + j, 50 + i, 50, 50);
     }
