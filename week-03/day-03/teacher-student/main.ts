@@ -10,7 +10,7 @@
 
 'use strict';
 
-class Student {
+export class Students {
 
   learn ():void {
     console.log('Learning somethnig new.');
@@ -21,9 +21,9 @@ class Student {
   }
 }
 
-class Teacher {
+export class Teacher {
 
-  teach (student:Student):void {
+  teach (student:Students):void {
     student.learn();
   }
 
@@ -32,7 +32,7 @@ class Teacher {
   }
 }
 
-let s1 = new Student;
+let s1 = new Students;
 let t1 = new Teacher;
 
 s1.question(t1);
