@@ -28,6 +28,7 @@ export class Garden {
   watering(amountOfWater: number): void {
     console.log('Watering with ' + amountOfWater);
     let pcs: number;
+    for (const flower of this.flowers) 
     for (let i: number = 0; i < this.flowers.length; i++) {
       if (this.flowers ) {
 
