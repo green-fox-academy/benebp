@@ -1,6 +1,8 @@
 'use strict';
 
-export abstract class Animal {
+import { Flyable } from './flyable';
+
+abstract class Animal {
   name: string;
 
   constructor(name: string) {
@@ -40,13 +42,25 @@ class Reptile extends Animal {
 const reptile = new Reptile('Crocodile');
 console.log(`A ${reptile.getName()} is breeding by ${reptile.breed()}`);
 
-class Bird extends Animal {
+export class Bird extends Animal implements Flyable {
   constructor (name: string) {
     super(name);
   }
 
   breed(): string {
     return 'breeding by laying eggs.'
+  }
+
+  land(): string {
+    return 'lands on its feet'
+  }
+
+  fly(): string {
+    return 'gets tired fast while flying'
+  }
+
+  takeOff(): string {
+    return 'both verticaly and horizontaly'
   }
 }
 
