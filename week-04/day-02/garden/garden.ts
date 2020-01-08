@@ -5,42 +5,47 @@ import { Flower } from './flower';
 import { Tree } from './tree';
 
 export class Garden {
-  flowers: Plants[];
-  trees: Plants[];
+  plants: Plants[] = [];
 
-  constructor () {
-    this.flowers = [];
-    this.trees = [];
+  addFlower (colour: string): void {
+    this.plants.push(new Flower(colour));
   }
 
-  addFlower (flower: Plants): void {
-    this.flowers.push(flower);
+  addTree (colour: string): void {
+    this.plants.push(new Tree(colour));
   }
 
-  addTree (tree: Plants): void {
-    this.trees.push(tree);
+  getGarden(): void {
+    for (let i: number = 0; i < this.plants.length; i++) {
+      this.plants[i].thirstyCheck();
+    }
   }
 
-  lookOfGarden(): void {
-    
-  }
-
-  watering(amountOfWater: number): void {
-    console.log('Watering with ' + amountOfWater);
-    let pcs: number;
-    for (const flower of this.flowers) 
-    for (let i: number = 0; i < this.flowers.length; i++) {
-      if (this.flowers ) {
-
+  waterGarden(fullWaterAmount: number): void {
+    let waterPortion: number;
+    let thirstyPlants: number = 0;
+    for (let i: number = 0; i < this.plants.length; i++) {
+      if (this.plants[i].needsWater()) {
+        thirstyPlants++;
+      }
+      console.log(this.plants[i].needsWater());
+    }
+    waterPortion = fullWaterAmount / thirstyPlants;
+    console.log(waterPortion);
+    for (let i: number = 0; i < this.plants.length; i++) {
+      if (this.plants[i].needsWater()) {
+        this.plants[i].watering(waterPortion);
       }
     }
-
-
-    // amountOfWater / plants need watering
-    this.lookOfGarden();
+    this.getGarden();
   }
 }
 
-let myGarden = new Garden;
-let yellow = new Flower('yellow');
-myGarden.addFlower(yellow);
+let myGarden = new Garden();
+myGarden.addFlower('yellow');
+myGarden.addFlower('blue');
+myGarden.addTree('purple');
+myGarden.addTree('orange');
+myGarden.getGarden();
+myGarden.waterGarden(40);
+myGarden.waterGarden(70);
