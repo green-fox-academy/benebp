@@ -7,10 +7,10 @@ export abstract class Aircraft {
   baseDamage: number;
   priority: boolean;
 
-  constructor(type: string, maxAmmo: number, ammoLevel: number = 0, baseDamage: number, priority: boolean) {
+  constructor(type: string, maxAmmo: number, baseDamage: number, priority: boolean) {
     this.type = type;
     this.maxAmmo = maxAmmo;
-    this.ammoLevel = ammoLevel;
+    this.ammoLevel = 0;
     this.baseDamage = baseDamage;
     this.priority = priority;
   }
@@ -21,8 +21,9 @@ export abstract class Aircraft {
     return allDamage
   }
 
-  refill() {
-
+  refill(ammo: number): number {
+    let remainingAmmo: number = ammo - (this.maxAmmo - this.ammoLevel)
+    return remainingAmmo
   }
 
   getType(): string {
@@ -33,7 +34,7 @@ export abstract class Aircraft {
     return 'Type ' + this.type + ', Ammo: ' + this.ammoLevel + ', Base Damage: ' + this.baseDamage + ', All Damage: ' + (this.baseDamage * this.ammoLevel)
   }
 
-  isPriority() {
+  isPriority(): boolean {
     return this.priority
   }
 }
