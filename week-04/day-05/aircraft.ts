@@ -1,6 +1,6 @@
 'use strict';
 
-export abstract class Aircraft {
+export class Aircraft {
   type: string;
   maxAmmo: number;
   ammoLevel: number;
@@ -23,6 +23,7 @@ export abstract class Aircraft {
 
   refill(ammo: number): number {
     let remainingAmmo: number = ammo - (this.maxAmmo - this.ammoLevel)
+    this.ammoLevel = ammo - remainingAmmo
     return remainingAmmo
   }
 

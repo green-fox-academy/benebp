@@ -9,7 +9,7 @@ export class Carrier {
   ammoStorage: number;
   hp: number;
 
-  constructor(ammoStorage: number = 1000, hp: number = 5000) {
+  constructor(ammoStorage: number = 10000, hp: number = 5000) {
     this.ammoStorage = ammoStorage;
     this.hp = hp;
   }
@@ -19,18 +19,35 @@ export class Carrier {
       this.aircrafts.push(new F16());
     } else if (type === 'F35') {
       this.aircrafts.push(new F35());
+    } else {
+      throw 'wrong type of aircraft, choose between F35 and F16';
     }
   }
 
   fill() {
-
+    for (let i: number = 0; i < this.aircrafts.length; i++) {
+      this.aircrafts[i].refill(this.ammoStorage);
+      this.ammoStorage -= this.aircrafts[i].ammoLevel;
+    }
   }
 
   fight() {
 
   }
 
-  getStatus() {
-
+  getStatus(): string {
+    let totalDamage: number = 0;
+    for (let i: number = 0; i < this.aircrafts.length; i++) {
+      totalDamage += this.aircrafts[i].ammoLevel * this.aircrafts[i].baseDamage;
+    }
+    let list: string = '';
+    for (let i: number = 0; i < this.aircrafts.length; i++) {
+      list = list + this.aircrafts[i].getStatus() + '\n';
+    }
+    if (this.hp > 0) {
+      return 'HP: ' + this.hp + ', Aircraft count: ' + this.aircrafts.length + ', Ammo Storage: ' + this.ammoStorage + ', Total damage: ' + totalDamage + '\nAircrafts:\n' + list
+    } else {
+      return "It's dead Jim :(";
+    }
   }
 }
