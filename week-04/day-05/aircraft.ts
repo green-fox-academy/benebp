@@ -22,9 +22,15 @@ export class Aircraft {
   }
 
   refill(ammo: number): number {
-    let remainingAmmo: number = ammo - (this.maxAmmo - this.ammoLevel)
-    this.ammoLevel = ammo - remainingAmmo
-    return remainingAmmo
+    let neededAmmo = this.maxAmmo - this.ammoLevel;
+    if (neededAmmo < ammo) {
+      ammo -= neededAmmo;
+      this.ammoLevel += neededAmmo;
+    } else {
+      this.ammoLevel += ammo;
+      ammo = 0;
+    }
+    return ammo
   }
 
   getType(): string {
@@ -32,7 +38,7 @@ export class Aircraft {
   }
 
   getStatus(): string {
-    return 'Type ' + this.type + ', Ammo: ' + this.ammoLevel + ', Base Damage: ' + this.baseDamage + ', All Damage: ' + (this.baseDamage * this.ammoLevel)
+    return `Type ${this.type}, Ammo: ${this.ammoLevel}, Base Damage: ${this.baseDamage}, All Damage: ${(this.baseDamage * this.ammoLevel)}`;
   }
 
   isPriority(): boolean {

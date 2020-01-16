@@ -25,14 +25,20 @@ export class Carrier {
   }
 
   fill() {
+    //2 for ciklus, h elobb toltse fel a pririty repuloket, masodik for pedig a nem priority-t, ha maradt ammo
     for (let i: number = 0; i < this.aircrafts.length; i++) {
-      this.aircrafts[i].refill(this.ammoStorage);
-      this.ammoStorage -= this.aircrafts[i].ammoLevel;
+      // this.aircrafts[i].refill(this.ammoStorage);
+      // this.ammoStorage -= this.aircrafts[i].ammoLevel;
+      this.ammoStorage = this.aircrafts[i].refill(this.ammoStorage);
     }
   }
 
-  fight() {
-
+  fight(enemy: Carrier): void {
+    let allDmg = 0;
+    for (let i: number = 0; i < this.aircrafts.length; i++) {
+      allDmg += this.aircrafts[i].fight();
+    }
+    enemy.hp -= allDmg;
   }
 
   getStatus(): string {
@@ -45,7 +51,7 @@ export class Carrier {
       list = list + this.aircrafts[i].getStatus() + '\n';
     }
     if (this.hp > 0) {
-      return 'HP: ' + this.hp + ', Aircraft count: ' + this.aircrafts.length + ', Ammo Storage: ' + this.ammoStorage + ', Total damage: ' + totalDamage + '\nAircrafts:\n' + list
+      return `HP: ${this.hp}, Aircraft count: ${this.aircrafts.length}, Ammo Storage: ${this.ammoStorage}, Total damage: ${totalDamage}` + '\nAircrafts:\n' + list;
     } else {
       return "It's dead Jim :(";
     }
