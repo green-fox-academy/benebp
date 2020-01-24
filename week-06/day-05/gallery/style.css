@@ -81,4 +81,5 @@ li {
   width: 50px;
   height: 100%;
   background-color: rgb(226, 45, 226);
+  display: block;
 }

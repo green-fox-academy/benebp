@@ -36,13 +36,15 @@ window.onload = function() {
     console.log(picNum);
     changePic(picNum);
   };
-/*
-  pics.forEach(e => {
+
+  pics.forEach((e),(i) => {
     let ulElement = document.querySelector('.thumbnails');
     let newThumbnail = document.createElement('li');
     let newImg = document.createElement('img');
     ulElement.appendChild(newThumbnail);
     newThumbnail.appendChild(newImg);
-    document.querySelector('img').setAttribute('src', pics[0].path);
-  }); */
+    document.querySelector('img').setAttribute('src', pics[i].path);
+    document.querySelector('img').setAttribute('width', '50px');
+    document.querySelector('img').setAttribute('height', '50px');
+  });
 };
