@@ -5,6 +5,11 @@
 
 body {
   background-color: rgb(189, 189, 189);
+  transition: background-color 0.5s ease;
+}
+
+body:hover {
+  background-color: rgb(206, 190, 190);
 }
 
 .container {
@@ -12,12 +17,18 @@ body {
   display: flex;
   height: 60%;
   margin: 50px 200px;
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.3), 0 9px 30px 0 rgba(0, 0, 0, 0.28);
 }
 
 .left-aside {
   flex: 1;
   background-color: rgb(155, 155, 155);
+  transition: background-color 0.5s ease;
   position: relative;
+}
+
+.left-aside:hover {
+  background-color: rgb(131, 131, 131);
 }
 
 .left-arrow {
@@ -56,7 +67,12 @@ body {
 .right-aside {
   flex: 1;
   background-color: rgb(155, 155, 155);
+  transition: background-color 0.5s ease;
   position: relative;
+}
+
+.right-aside:hover {
+  background-color: rgb(131, 131, 131);
 }
 
 .right-arrow {
@@ -70,16 +86,22 @@ body {
 
 .thumbnails {
   display: flex;
-  height: 50px;
+  height: 72px;
   width: 100%;
   justify-content: center;
 }
 
-li {
+.thumbnailButtons {
   list-style: none;
-  margin-right: 5px;
-  width: 50px;
+  margin-right: 30px;
+  width: 128px;
   height: 100%;
-  background-color: rgb(226, 45, 226);
   display: block;
+  box-shadow: 0 9px 18px 0 rgba(0, 0, 0, 0.45), 0 12px 45px 0 rgba(0, 0, 0, 0.42);
+}
+
+.thumbnail:hover {
+  border-style: solid;
+  border-width: 3px;
+  border-color: indigo;
 }

@@ -37,14 +37,20 @@ window.onload = function() {
     changePic(picNum);
   };
 
-  pics.forEach((e),(i) => {
-    let ulElement = document.querySelector('.thumbnails');
-    let newThumbnail = document.createElement('li');
-    let newImg = document.createElement('img');
+  pics.forEach(e => {
+    const ulElement = document.querySelector('.thumbnails');
+    const newThumbnail = document.createElement('button');
+    const newImg = document.createElement('img');
     ulElement.appendChild(newThumbnail);
+    newThumbnail.setAttribute('class', 'thumbnailButtons');
     newThumbnail.appendChild(newImg);
-    document.querySelector('img').setAttribute('src', pics[i].path);
-    document.querySelector('img').setAttribute('width', '50px');
-    document.querySelector('img').setAttribute('height', '50px');
+    newImg.setAttribute("class", "thumbnail");
+    newImg.setAttribute('width', '128px');
+    newImg.setAttribute('height', '72px');
+    newImg.setAttribute('src', e.path);
+    newThumbnail.onclick = () => {
+      picNum = pics.indexOf(e);
+      changePic(picNum);
+    }
   });
 };

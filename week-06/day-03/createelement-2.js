@@ -36,5 +36,11 @@ const planetData = [
 let ulList = document.querySelector('ul');
 ulList.removeChild(document.querySelector('li'));
 
-let asteroids = document.createElement('li');
-ulList.appendChild(asteroids);
+planetData.forEach(element => {
+  if (element.asteroid) {
+    const asteroids = document.createElement('li');
+    ulList.appendChild(asteroids);
+    asteroids.setAttribute('class', element.category);
+    asteroids.innerText = element.content;
+  }
+});
