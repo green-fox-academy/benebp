@@ -1,6 +1,6 @@
 'use strict';
 
-const GIPHY_API_KEY = 'wNQBHQ5BCqQ1n2l93NnMBb1caOjgFMmq';
+const GIPHY_API_KEY = undefined;
 let giphfyXHR = new XMLHttpRequest();
 giphfyXHR.open('GET', `http://api.giphy.com/v1/gifs/search?api_key=${GIPHY_API_KEY}&q=dog`);
 giphfyXHR.onload = (event) => {
