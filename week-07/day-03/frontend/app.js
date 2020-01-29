@@ -54,4 +54,30 @@ app.post('/dountil/:action', (req, res) => {
   }  
 });
 
+app.post('/arrays', (req, res) => {
+  let action = req.body.what;
+  let numbers = req.body.numbers;
+  if (action === 'double') {
+    let newNumbers = [];
+    numbers.forEach(element => {
+      newNumbers.push(element * 2);
+    });
+    res.json({results: newNumbers});
+  } else if (action === 'sum') {
+    let sum = 0;
+    numbers.forEach(element => {
+      sum += element;
+    });
+    res.json({result: sum});
+  } else if (action === 'multiply') {
+    let sum = 1;
+    numbers.forEach(element => {
+      sum *= element;
+    });
+    res.json({result: sum});
+  } else if (!action) {
+    res.json({error: "Please provide what to do with the numbers!"})
+  }
+});
+
 app.listen(3000);
