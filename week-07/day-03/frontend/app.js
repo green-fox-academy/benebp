@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 app.use(express.static('assets'));
+app.use(express.json());
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
@@ -28,6 +29,29 @@ app.get('/greeter', (req, res) => {
   } else {
     res.json({welcome_message: `Oh, hi there ${name}, my dear ${title}!`})
   }
+});
+
+app.get('/appenda/:string', (req, res) => {
+  let string = req.params.string;
+  res.json({appended: string + "a"});
+});
+
+app.post('/dountil/:action', (req, res) => {
+  let action = req.params.action;
+  let number = req.body.until;
+  if (action === 'sum') {
+    let sum = 0;
+    for (let i = 1; i <= number; i++) {
+      sum += i;
+    }
+    res.json({result: sum})
+  } else if (action === 'factor') {
+    let sum = 1;
+    for (let i = 1; i <= number; i++) {
+      sum *= i;
+    }
+    res.json({result: sum})
+  }  
 });
 
 app.listen(3000);
