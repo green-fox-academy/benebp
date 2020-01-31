@@ -7,7 +7,7 @@ let conn = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'password',
-  database: 'bookstore',
+  database: 'reddit',
 });
 
 conn.connect((err) => {
@@ -20,6 +20,18 @@ conn.connect((err) => {
 
 app.get('/hello', (req, res) => {
   res.send('hello maunika');
+});
+
+app.get('/posts', (req, res) => {
+  let sql = `SELECT * FROM posts`;
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      console.error(`Cannot retrieve data: ${err.toString()}`);
+      res.sendStatus(500);
+      return null;
+    }
+    return res.status(200).json(rows);
+  });
 });
 
 app.listen(3000);
