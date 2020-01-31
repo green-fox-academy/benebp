@@ -35,7 +35,7 @@ INSERT INTO `author` (`aut_id`, `aut_name`, `country`, `home_city`) VALUES
 ('AUT010', 'Joseph Milton', 'USA', 'Houston'),
 ('AUT011', 'John Betjeman Hunter', 'Australia', 'Sydney'),
 ('AUT012', 'Evan Hayek', 'Canada', 'Vancouver'),
-('AUT013', 'E. Howard', 'Australia', 'Adelaide'),
+('AUT013', 'E. Howard', 'Australia', 'Adel${category}aide'),
 ('AUT014', 'C. J. Wilde', 'UK', 'London'),
 ('AUT015', 'Butler Andre', 'USA', 'Florida');
 
