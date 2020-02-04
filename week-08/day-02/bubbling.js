@@ -9,29 +9,28 @@ let params = {
 };
 
 nav.addEventListener('click', (e) => {
-  let styleString = `background-size: ${params.size}%; background-position: ${params.right}px ${params.down}px`;
   if (e.target.innerText === 'Up') {
     params.down -= 10;
-    imgIns.setAttribute('style', styleString);
+    imgIns.setAttribute('style', `background-size: ${params.size}%; background-position: ${params.right}px ${params.down}px`);
   };
   if (e.target.innerText === 'Down') {
     params.down += 10;
-    imgIns.setAttribute('style', styleString);
+    imgIns.setAttribute('style', `background-size: ${params.size}%; background-position: ${params.right}px ${params.down}px`);
   };
   if (e.target.innerText === 'Left') {
     params.right -= 10;
-    imgIns.setAttribute('style', styleString);
+    imgIns.setAttribute('style', `background-size: ${params.size}%; background-position: ${params.right}px ${params.down}px`);
   };
   if (e.target.innerText === 'Right') {
     params.right += 10;
-    imgIns.setAttribute('style', styleString);
+    imgIns.setAttribute('style', `background-size: ${params.size}%; background-position: ${params.right}px ${params.down}px`);
   };
   if (e.target.innerText === 'Zoom in') {
     params.size += 20;
-    imgIns.setAttribute('style', styleString);
+    imgIns.setAttribute('style', `background-size: ${params.size}%; background-position: ${params.right}px ${params.down}px`);
   };
   if (e.target.innerText === 'Zoom out') {
     params.size -= 20;
-    imgIns.setAttribute('style', styleString);
+    imgIns.setAttribute('style', `background-size: ${params.size}%; background-position: ${params.right}px ${params.down}px`);
   };
 });
