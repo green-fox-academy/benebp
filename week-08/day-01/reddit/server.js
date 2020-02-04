@@ -37,15 +37,16 @@ app.get('/posts', (req, res) => {
       res.sendStatus(500);
       return null;
     }
-    return res.status(200).json(makeJSON(rows));
+    return res.status(200).json({posts: rows});
   });
 });
 
 app.post('/posts', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
-  let title = req.body.title;
-  let url = req.body.url;
-  let timestamp = req.body.timestamp;
+  const {title, url, timestamp} = req.body
+  // let title = req.body.title;
+  // let url = req.body.url;
+  // let timestamp = req.body.timestamp;
   let sql = `INSERT INTO posts (title, url, timestamp) VALUES (?, ?, ?);`;
   conn.query(sql, [title, url, timestamp], (err, rows) => {
     let justPostedID = rows.insertId;
@@ -53,15 +54,15 @@ app.post('/posts', (req, res) => {
     if (err) {
       console.error(err);
       res.sendStatus(500);
-      return null;
+      return;
     } else {
       conn.query(sqlJustPosted, (err, rows2) => {
         if (err) {
           console.error(`Cannot retrieve data: ${err.toString()}`);
           res.sendStatus(500);
-          return null;
+        } else {
+          res.status(200).json(rows2);
         }
-        return res.status(200).json(rows2);
       });
     };
   });

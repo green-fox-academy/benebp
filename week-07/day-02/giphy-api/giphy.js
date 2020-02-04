@@ -11,7 +11,7 @@ giphfyXHR.onload = (event) => {
   for (let i = 0; i < 16; i++) {
     let buttonElement = document.createElement('button');
     let imgElement = document.createElement('img');
-    imgElement.setAttribute('src', response.data[i].images.fixed_height_small_still.url)
+    imgElement.setAttribute('src', response.data[i].images.fixed_height_small_still.url);
     document.body.appendChild(buttonElement);
     buttonElement.appendChild(imgElement);
   }
