@@ -7,7 +7,7 @@ const radio2 = document.getElementById('radio2');
 const petChoice1 = document.getElementById('petChoice1');
 const petChoice2 = document.getElementById('petChoice2');
 const petChoice3 = document.getElementById('petChoice3');
-const button = document.querySelector('button');
+const button = document.querySelectorAll('button');
 
 // 1 soros if sytax ( feltetel ? ha igaz : ha hamis ) (else mindig kell):
 // (petChoice1.checked || petChoice2.checked) ? !signUp.disabled : '';
@@ -33,10 +33,8 @@ document.querySelectorAll('input[name="facts"]').forEach(item => {
   item.addEventListener('input', () => item.id === 'catFactsYes' ? catLove.disabled = false : catLove.disabled = true);
 });
 
-button.addEventListener('click', () => {
-  alert('Thank you, you\'ve successfully signed up for cat facts');
+document.querySelectorAll('button').forEach(item => {
+  item.addEventListener('click', () => alert('Thank you, you\'ve successfully signed up for cat facts'))
 });
 
-// document.querySelectorAll('button').forEach(item => {
-//   item.addEventListener('click', () => alert('Thank you, you\'ve successfully signed up for cat facts'))
-// });
+// alert('Sigh, we still added you to the cat facts list')
