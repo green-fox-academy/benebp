@@ -68,4 +68,48 @@ app.post('/posts', (req, res) => {
   });
 });
 
+app.put('/posts/:id/upvote', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  let id = req.params.id;
+  const upvoteSQL = `UPDATE users SET vote = vote + 1 WHERE id = ?;`;
+  conn.query(upvoteSQL, [id], (err, rows) => {
+    let sqlJustVoted = `SELECT * FROM posts WHERE id = ?;`;
+    if (err) {
+      console.error(err);
+      res.sendStatus(500).send('DB ERROR');
+      return;
+    } else {
+      conn.query(sqlJustVoted, [id], (err, rows2) => {
+        if (err) {
+          res.sendStatus(500).send('DB ERROR');
+        } else {
+          res.status(200).json(rows2);
+        }
+      });
+    };
+  });
+});
+
+app.put('/posts/:id/downvote', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  let id = req.params.id;
+  const downvoteSQL = `UPDATE users SET vote = vote - 1 WHERE id = ?;`;
+  conn.query(downvoteSQL, [id], (err, rows) => {
+    let sqlJustVoted = `SELECT * FROM posts WHERE id = ?;`;
+    if (err) {
+      console.error(err);
+      res.sendStatus(500).send('DB ERROR');
+      return;
+    } else {
+      conn.query(sqlJustVoted, [id], (err, rows2) => {
+        if (err) {
+          res.sendStatus(500).send('DB ERROR');
+        } else {
+          res.status(200).json(rows2);
+        }
+      });
+    };
+  });
+});
+
 app.listen(3000);
