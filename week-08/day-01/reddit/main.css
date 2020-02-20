@@ -1,0 +1,9 @@
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+header {
+  background: url(./milky-way.jpg) center, no-repeat;
+  height: 200px;
+  overflow: hidden;
+}

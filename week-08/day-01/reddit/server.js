@@ -33,9 +33,8 @@ app.get('/posts', (req, res) => {
   let sql = `SELECT * FROM posts`;
   conn.query(sql, (err, rows) => {
     if (err) {
-      console.error(`Cannot retrieve data: ${err.toString()}`);
-      res.sendStatus(500);
-      return null;
+      res.sendStatus(500).send('DB ERROR');
+      return;
     }
     return res.status(200).json({posts: rows});
   });
@@ -58,8 +57,7 @@ app.post('/posts', (req, res) => {
     } else {
       conn.query(sqlJustPosted, (err, rows2) => {
         if (err) {
-          console.error(`Cannot retrieve data: ${err.toString()}`);
-          res.sendStatus(500);
+          res.sendStatus(500).send('DB ERROR');
         } else {
           res.status(200).json(rows2);
         }
@@ -71,19 +69,19 @@ app.post('/posts', (req, res) => {
 app.put('/posts/:id/upvote', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   let id = req.params.id;
-  const upvoteSQL = `UPDATE users SET vote = vote + 1 WHERE id = ?;`;
-  conn.query(upvoteSQL, [id], (err, rows) => {
+  const upvoteSQL = `UPDATE posts SET score = score + 1 WHERE id = ?;`;
+  conn.query(upvoteSQL, [id], (err) => {
+    // res.redirect('/posts');
     let sqlJustVoted = `SELECT * FROM posts WHERE id = ?;`;
     if (err) {
       console.error(err);
       res.sendStatus(500).send('DB ERROR');
-      return;
     } else {
-      conn.query(sqlJustVoted, [id], (err, rows2) => {
+      conn.query(sqlJustVoted, [id], (err, rows) => {
         if (err) {
           res.sendStatus(500).send('DB ERROR');
         } else {
-          res.status(200).json(rows2);
+          res.status(200).json(rows);
         }
       });
     };
@@ -93,19 +91,19 @@ app.put('/posts/:id/upvote', (req, res) => {
 app.put('/posts/:id/downvote', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   let id = req.params.id;
-  const downvoteSQL = `UPDATE users SET vote = vote - 1 WHERE id = ?;`;
-  conn.query(downvoteSQL, [id], (err, rows) => {
+  const downvoteSQL = `UPDATE posts SET score = score - 1 WHERE id = ?;`;
+  conn.query(downvoteSQL, [id], (err) => {
+    // res.redirect('/posts');
     let sqlJustVoted = `SELECT * FROM posts WHERE id = ?;`;
     if (err) {
       console.error(err);
       res.sendStatus(500).send('DB ERROR');
-      return;
     } else {
-      conn.query(sqlJustVoted, [id], (err, rows2) => {
+      conn.query(sqlJustVoted, [id], (err, rows) => {
         if (err) {
           res.sendStatus(500).send('DB ERROR');
         } else {
-          res.status(200).json(rows2);
+          res.status(200).send(rows);
         }
       });
     };
