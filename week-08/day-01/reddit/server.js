@@ -2,6 +2,7 @@ const mysql = require('mysql');
 const express = require('express');
 const app = express();
 app.use(express.json());
+app.use(express.static('./static'));
 
 let conn = mysql.createConnection({
   host: 'localhost',
@@ -19,7 +20,7 @@ conn.connect((err) => {
 });
 
 app.get('/hello', (req, res) => {
-  res.send('hello maunika');
+  res.sendFile(__dirname + '/static/index.html');
 });
 
 function makeJSON(rows) {
