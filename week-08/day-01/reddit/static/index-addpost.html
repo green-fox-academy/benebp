@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reddit Clone</title>
+  <link rel="stylesheet" href="main.css" type="text/css">
+</head>
+<body>
+  <header>
+    <h1>Space</h1>
+  </header>
+  <a href="/">Posts</a>
+  <main>
+    <h2>Add new post</h2>
+    <form action="/posts" method="POST">
+      <label for="title">Title
+        <input type="text" id="title" required>
+      </label>
+      <label for="url">URL
+        <input type="text" id="url" required>
+      </label>
+      <label for="timestamp">Timestamp
+        <input type="number" id="timestamp" required>
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+  </main>
+  <script src="script-addpost.js"></script>
+</body>
+</html>

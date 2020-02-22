@@ -19,15 +19,13 @@ conn.connect((err) => {
   console.log('Connection established');
 });
 
-app.get('/hello', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(__dirname + '/static/index.html');
 });
 
-function makeJSON(rows) {
-  let json = { posts: [] };
-  json.posts = [...rows];
-  return json
-}
+app.get('/addpost', (req, res) => {
+  res.sendFile(__dirname + '/static/index-addpost.html');
+});
 
 app.get('/posts', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
@@ -46,20 +44,20 @@ app.post('/posts', (req, res) => {
   const {title, url, timestamp} = req.body;
   let sql = `INSERT INTO posts (title, url, timestamp) VALUES (?, ?, ?);`;
   conn.query(sql, [title, url, timestamp], (err, rows) => {
-    let justPostedID = rows.insertId;
-    let sqlJustPosted = `SELECT * FROM posts WHERE id = ${justPostedID}`;
+    // let justPostedID = rows.insertId;
+    // let sqlJustPosted = `SELECT * FROM posts WHERE id = ${justPostedID}`;
     if (err) {
       console.error(err);
       res.status(500);
       return;
-    } else {
-      conn.query(sqlJustPosted, (err, rows2) => {
-        if (err) {
-          res.status(500).send('DB ERROR');
-        } else {
-          res.status(200).json(rows2);
-        }
-      });
+    // } else {
+    //   conn.query(sqlJustPosted, (err, rows2) => {
+    //     if (err) {
+    //       res.status(500).send('DB ERROR');
+    //     } else {
+    //       res.status(200).json(rows2);
+    //     }
+    //   });
     };
   });
 });
