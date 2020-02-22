@@ -7,7 +7,17 @@
 </head>
 <body>
   <main>
-    Hello
+    <h1>Your ToDos:</h1>
+    <div id="todos"></div>
+    <div id="newtodo">
+      <h2>Add new ToDo here:</h2>
+      <form action="/todos" method="POST">
+        <label for="todo">
+          <input type="text" id="todo">
+        </label>
+        <button type="submit">Add</button>
+      </form>
+    </div>
   </main>
   <script src="script.js"></script>
 </body>
