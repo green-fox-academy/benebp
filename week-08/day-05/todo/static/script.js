@@ -27,14 +27,44 @@ const refreshTodos = () => {
     .then((resp) => resp.json())
     .then((data) => {
       todosDIV.innerHTML = '';
+      if (data.todos.length === 0) {
+        todosDIV.innerText = 'No Todos in the list'
+      };
       let ul = makeNode('ul');
       todosDIV.appendChild(ul);
       data.todos.forEach(e => {
         let li = makeNode('li');
+        let statusButton = makeNode('button');
+        let deleteButton = makeNode('button');
         li.innerText = e.todo;
+        statusButton.innerText = 'Mark as done';
+        deleteButton.innerText = 'Delete';
+        if (e.status === 1) {
+          li.setAttribute('style', 'text-decoration: line-through');
+          statusButton.disabled = true;
+          statusButton.innerText = 'Done';
+        };
         ul.appendChild(li);
+        li.appendChild(statusButton);
+        li.appendChild(deleteButton);
+        statusButton.addEventListener('click', () => {
+          fetch(`/todos/${e.id}`, {
+            method: 'PUT'
+          })
+            .then(() => {
+              li.setAttribute('style', 'text-decoration: line-through');
+              statusButton.disabled = true;
+              statusButton.innerText = 'Done';
+            });
+        });
+        deleteButton.addEventListener('click', () => {
+          fetch(`/todos/${e.id}`, {
+            method: 'DELETE'
+          })
+            .then(() => refreshTodos());
+        });
       });
-    })
+    });
 };
 
 refreshTodos();
