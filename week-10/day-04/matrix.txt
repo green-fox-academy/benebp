@@ -1,0 +1,44 @@
+3x3 Matrix Changer
+You will create a web page which can render and modify an existing 3x3 number matrix.
+
+Highlights
+The checking page should look like this:
+
+index
+
+It has a frontend which:
+renders the main page with a form to get a particular matrix based on it's id
+and another form, with 3x3 input fields and a submit button
+It has a backend which:
+modify and save the valid matrix to a database
+determines the usable_matrix field
+Database
+Feel free to use the provided SQL file.
+
+Frontend
+the frontend should have:
+an input field and submit button to load a matrix
+a heading with the title of 3x3 Matrix
+a heading with a nice contect
+3x3 input fields
+submit button for sending the matrix to backend
+matrix is valid if
+all the fields are filled
+it contains only numbers
+Backend
+if the sum of the even numbers are between 1 and 33:
+then the column usable_matrix in the database should be 1
+otherwise 0
+if everything is fine save the changes in the following format:
+id, m1, m2, m3, m4, m5, m6, m7, m8, m9, usable_matrix
+Endpoints
+GET /
+this endpoint should render an HTML displaying the main page
+GET /matrix/:id
+this endpoint sends a json with the given matrix
+if the there is no matrix with the given id this endpoint should answer back with a 404 error code
+PUT /matrix/:id
+this endpoint is responsible for receiving, determining usable_matrix field and updating to the database
+if the there is no matrix with the given id this endpoint should answer back with a 401 error code
+DELETE /remove/:id
+this endpoint should delete the matrix with the given parameter
