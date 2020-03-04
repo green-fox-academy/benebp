@@ -3,14 +3,16 @@
 const mysql = require('mysql');
 const express = require('express');
 const app = express();
+require('dotenv').config();
 app.use(express.json());
 app.use(express.static('./static'));
+const PORT = process.env.TODO_PORT;
 
 let conn = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'password',
-  database: 'todo',
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PW,
+  database: process.env.DB_DB
 });
 
 conn.connect((err) => {
@@ -78,4 +80,4 @@ app.delete('/todos/:id', (req, res) => {
   };
 });
 
-app.listen(3000);
+app.listen(PORT || 3000);
