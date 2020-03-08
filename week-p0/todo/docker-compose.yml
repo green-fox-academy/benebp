@@ -1,0 +1,16 @@
+version: '2'
+services:
+    db:
+      build: ./db
+      ports: "3306:3306"
+    todoapp:
+      build: .
+      ports: "3000:3000"
+      depents-on: db
+      network-mode: host
+      enviroment:
+        DB_HOST=localhost
+        DB_DB=todo
+        DB_USER=root
+        DB_PW=password
+      restart: on-failure

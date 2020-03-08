@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToDo App by benebp</title>
+</head>
+<body>
+  <main>
+    <h1>Your ToDos:</h1>
+    <div id="todos"></div>
+    <div id="newtodo">
+      <h2>Add new ToDo here:</h2>
+      <form action="/todos" method="POST">
+        <label for="todo">
+          <input type="text" id="todo">
+        </label>
+        <button type="submit">Add</button>
+      </form>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
